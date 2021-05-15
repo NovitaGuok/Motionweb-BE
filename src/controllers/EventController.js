@@ -3,7 +3,7 @@ const User = require('../models/User')
 
 module.exports = {
     async createEvent(req, res) {
-        const { title, description, price, category } = req.body
+        const { title, description, price, category, date } = req.body
         const { user_id } = req.headers
         const { filename } = req.file
 
@@ -19,7 +19,8 @@ module.exports = {
             price: parseFloat(price),
             user: user_id,
             category,
-            thumbnail: filename
+            thumbnail: filename,
+            date
         })
 
         return res.json(event)
